@@ -6,7 +6,8 @@ import AuthorList from '../AuthorList/AuthorList';
 const Main = () => {
     return (
         <div>
-            <AddAuthor />
+            {/* <AddAuthor /> */}
+            {/* <hr /> */}
             <AuthorList />
         </div>
     );

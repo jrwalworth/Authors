@@ -6,7 +6,7 @@ const AuthorSchema = new mongoose.Schema(
             type: String,
             required : [true, "Author name is required"],
             min: [3, "Author names must be at least 3 characters long."]
-        }
+        },
     },
     {
         timestamps: true,

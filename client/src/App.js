@@ -1,6 +1,7 @@
 import { Route, Routes}  from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
+import Nav from './components/Nav/Nav';
 import Header from './components/Header/Header';
 import Main from './components/views/Main';
 import AddAuthor from './components/AddAuthor/AddAuthor';
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Nav />
       <Routes>
         <Route path='/' element={<Main />} default />
         <Route path='/new' element={<AddAuthor />} />

@@ -1,0 +1,28 @@
+/* HEADER STYLES */
+/* header {
+    background-color: darkolivegreen;
+    color: seashell;
+    padding: 20px;
+} */
+
+.nav-link {
+    color: rgb(105, 103, 103);
+    text-decoration: none;
+    margin:0;
+    padding:.5em;
+}
+
+.nav-div {
+    color: rgb(105, 103, 103);
+}
+
+.active {
+    /* color: crimson; */
+    font-weight: bolder;
+}
+
+.nav-search {
+    border-radius: 5rem;
+    padding-left: 15px;
+}
+/* END HEADER STYLES */
