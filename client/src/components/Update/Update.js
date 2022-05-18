@@ -1,8 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Update.css';
-import Nav from '../Nav/Nav';
 import Header from '../Header/Header';
 import Form from '../Form/Form';
 
@@ -10,6 +9,7 @@ import Form from '../Form/Form';
 const Update = (props) => {
     const [editAuthor, setEditAuthor] = useState({
         name: '',
+        likes: 0,
     });
     const [errors, setErrors] = useState({});
     const {id} = useParams();
@@ -38,8 +38,9 @@ const Update = (props) => {
         .catch((err) => {
             console.log('err.response=', err.response);
             console.log('err.response.data=', err.response.data);
-            console.log('err.response.data.errors=', err.response.data.errors);
-            setErrors(err.response.data.errors);
+            console.log('err.response.data.errors=', err.response.data.error.errors);
+            console.log('err.response.data.error.errors.name.message=', err.response.data.error.errors.name.message);
+            setErrors(err.response.data.error.errors);
         });
     };
 
@@ -66,6 +67,7 @@ const Update = (props) => {
             buttonText={'Update Author'} 
             onChangeHandler={onChangeHandler} 
             />
+            
     </>
     );
 };

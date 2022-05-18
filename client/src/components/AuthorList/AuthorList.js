@@ -1,19 +1,22 @@
 import React from 'react';
 import { useEffect, useState} from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import Header from '../Header/Header';
-import {} from 'react-icons/fa';
+import { FaThumbsUp, FaSortAlphaDown } from 'react-icons/fa';
 import './AuthorList.css';
 
-const AuthorList = () => {
+const AuthorList = (props) => {
     const [authors, setAuthors] = useState([]);
+    const {author, likes, setLIkes} = props;
+    const {id} = useParams();
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/authors/')
         .then((res) => {
             console.log(res.data);
             setAuthors(res.data);
+            // setLikes(...AuthorList, res.data);
         })
         .catch((err) => console.log('Error getting authors', err));
         }, []);
@@ -28,6 +31,15 @@ const AuthorList = () => {
         });
     };
 
+
+    const handleSort = () => {
+        const sortedAuthors = [...authors].sort((a,b) => {
+            return a.name > b.name ? 1 : -1
+        });
+        setAuthors(sortedAuthors);
+    };
+
+
     return (
         <>
             <Header 
@@ -35,21 +47,27 @@ const AuthorList = () => {
             link={'/new'}
             linkText={'Add Author'}
             />
+            <div className="sort">
+                <FaSortAlphaDown onClick={handleSort} className='sort'>
+                    <span className="sort-tooltip">Click to sort authors</span>
+                </FaSortAlphaDown>
+            </div>
+            
             <div className="container grid">
                 {  authors &&
                     authors.map((author, index) => (
-                        <div key={index} className="card m-3">
+                        <div key={index} className="card">
                             <h3 className="card-title">{author.name}</h3>
-                            <Link to={`authors/${author._id}`}>Get quotes from {author.name}...</Link>
-                            <div className="d-flex justify-content-between">
-                                <div className="likes">
-                                    <button>Likes</button>
+                            <Link to={`authors/${author._id}`}>View {author.name} Details...</Link>
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div className="likes d-flex justify-content-around align-items-center">
+                                    <span className="m-1">{likes}</span>
+                                    <FaThumbsUp className='like m-1'/>
                                 </div>
                                 <div>
                                 <Link to={"/authors/edit/" + author._id} className="btn btn-sm btn-outline-dark m-1" >Edit</Link>
                                 <button onClick={(e) => {deleteAuthor(author._id)}} className="btn btn-sm btn-outline-dark m-1" >Delete</button>
                                 </div>
-                                
                             </div>
                         </div>
                     )) 

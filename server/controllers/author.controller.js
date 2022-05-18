@@ -1,6 +1,7 @@
 const Author = require('../models/author.model');
 
 const createAuthor = (req,res) => {
+    //check for dupe before creating.
     Author.create(req.body)
     .then((newAuthor) => {
         console.log(newAuthor);
@@ -35,7 +36,7 @@ const getAuthorById = (req, res) => {
 const updateAuthor = (req, res) => {
     Author.updateOne({_id: req.params.id}, 
         req.body,
-        {new: true, runValidators: "true"})
+        {upsert:true, new: true, runValidators: "true"})
     .then((updatedAuthor) => {
         res.status(200).json(updatedAuthor);
     })

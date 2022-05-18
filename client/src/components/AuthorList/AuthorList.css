@@ -24,6 +24,25 @@
     background-color: rgb(34, 117, 211)
 }
 
+/* Likes  */
+
+.like {
+    color: grey;
+}
+
+/* .like:hover {
+    color: black;
+    cursor: pointer;
+} */
+/* End Likes */
+
+/* SORT */
+.sort {
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 1150px) {
@@ -41,15 +60,12 @@
 }
 
 @media only screen and (max-width: 800px){
-    .nav-search {
-        display: none;
-    }
     section{
         display: block;
     }
-    .col-3 {
+    /* .col-3 {
         display: block;
-    }
+    } */
     .cards {
         display: block;
         /* width: 50%; */
@@ -60,17 +76,14 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 780px) {
     .cards {
         display: block;
     }
-    .lg-3 {
-        width: 75%;
+    .container {
+        min-width: 300px;
     }
-    .ProductForm {
-        width: 75%;
-        margin-left: 2rem;
-    }
+
     .grid {
         display: grid;
         grid-template-columns: 1fr;

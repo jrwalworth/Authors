@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.actions {
+    margin: auto;
+    width: 40%;
+}
+
+/* Likes  */
+
+.like {
+    color: grey;
+}
+
+.like:hover {
+    color: black;
+    cursor: pointer;
+}
+/* End Likes */
+

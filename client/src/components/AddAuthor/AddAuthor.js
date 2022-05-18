@@ -9,10 +9,10 @@ const AddAuthor = (props) => {
     const { author } = props;
     const [newAuthor, setNewAuthor] = useState({
         name: '',
+        likes: 0,
     });
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-
 
     const handleSubmitNew = (e) => {
         e.preventDefault();
@@ -25,8 +25,9 @@ const AddAuthor = (props) => {
         .catch((err) => {
             console.log('err.response=', err.response);
             console.log('err.response.data=', err.response.data);
-            console.log('err.response.data.errors=', err.response.data.error);
-            setErrors(err.response.data.errors);
+            console.log('err.response.data.errors=', err.response.data.error.errors);
+            console.log('err.response.data.error.errors.name.message=', err.response.data.error.errors.name.message);
+            setErrors(err.response.data.error.errors);
         });
     };
 
