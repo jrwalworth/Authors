@@ -39,7 +39,8 @@ const Author = (props) => {
         .then((res) => {
             console.log('res', res);
             console.log('res.data', res.data);
-            setLikes(likes => likes + 1);
+            console.log('authordata', author.likes);
+            setLikes(author.likes = author.likes + 1);
             //disable like button after click.
             navigate('/');
         })

@@ -31,7 +31,6 @@ const AuthorList = (props) => {
         });
     };
 
-
     const handleSort = () => {
         const sortedAuthors = [...authors].sort((a,b) => {
             return a.name > b.name ? 1 : -1
